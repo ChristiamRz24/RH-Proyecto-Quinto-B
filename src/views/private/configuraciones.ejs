@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuraciones</title>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.png">
+    <link rel="stylesheet" href="../css/configuraciones.css" />
+  </head>
+  <body class="body d_flex f_d_column">
+    <%- include("../templates/Header") %>
+    <main class="main d_flex">
+      <%- include("../templates/Menu") %>
+      <div class="btns-container d-flex f_d_column a_i_center j_c_center">
+        <input
+          type="submit"
+          value="Crear copia de seguridad"
+          class="btn-diseño b_radius"
+          onclick="crearBackup()"
+        />
+        <div id="documents"></div>
+        <input
+          type="submit"
+          value="Restaurar copia de seguridad"
+          class="btn-diseño b_radius"
+        />
+      </div>
+    </main>
+    <script>
+      function crearBackup() {
+        const div_document = document.getElementById("documents");
+        div_document.style.height = "15%";
+        div_document.innerHTML = `
+          <a href="database/Script MySQL.sql" download="Script MySQL.sql">
+            <i class="fas fa-download"></i>
+            &nbsp; Script Base de Datos
+          </a>
+          <a href="database/Datos.sql" download="Datos.sql">
+            <i class="fas fa-download"></i>
+            &nbsp; Inserciones
+          </a>
+        `;
+      }
+    </script>
+  </body>
+</html>

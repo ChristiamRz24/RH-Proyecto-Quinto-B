@@ -1,0 +1,43 @@
+<!-- CSS -->
+<link rel="stylesheet" href="../css/header.css" />
+<!-- Header -->
+<header class="header d_flex">
+  <img src="../img/logo.svg" alt="LOGO" class="logo" />
+  <span class="separador"></span>
+  <div class="user_out_container d_flex a_i_center">
+    <div class="info_user_container d_flex j_c_center a_i_center b_radius">
+      <i class="fas fa-user-circle icono_usuario"></i>
+      <p class="info_user">
+        <strong class="txt_datos_usuario" id="txt_usuario"></strong><br />
+        <strong class="txt_permisos_usuario" id="txt_permisos"></strong>
+      </p>
+    </div>
+    <button class="btn_salir b_radius" onclick="salir()">
+      <i class="fas fa-sign-out-alt icono_salir"></i>
+      <strong class="texto_btn_salir">Salir</strong>
+    </button>
+  </div>
+</header>
+<script type="text/javascript">
+  function salir() {
+    location.href = "/";
+  }
+  function leerDatos() {
+    fetch("json/usuario.json") //Leer el archivo de la ruta
+      .then((respuesta) => respuesta.json()) //Formato de obtención de los datos
+      .then((respuesta) => {
+        mostrar(respuesta);
+      })
+      .catch((error) => console.log(error)); //Mostrar los errores por consola
+  }
+  function mostrar(datos) {
+    console.log(datos);
+    var txt_usuario = document.querySelector("#txt_usuario");
+    var txt_permisos = document.querySelector("#txt_permisos");
+    for (let valor of datos) {
+      txt_usuario.innerHTML += valor.lname + " " + valor.fname;
+      txt_permisos.innerHTML += valor.permisos;
+    }
+  }
+  leerDatos();
+</script>

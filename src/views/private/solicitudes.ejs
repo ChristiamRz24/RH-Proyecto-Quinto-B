@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solicitudes</title>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.png">
+    <link rel="stylesheet" href="../css/empleados.css" />
+    <link rel="stylesheet" href="../css/solicitudes.css" />
+  </head>
+  <body class="body d_flex f_d_column" onload="getDatos()">
+    <%- include("../templates/Header") %>
+    <main class="main d_flex">
+      <%- include("../templates/Menu") %>
+      <div class="seccion-empleados d-flex f_d_column a_i_center">
+        <div class="busqueda_container b_radius d-flex a_i_center">
+          <select name="cargo" id="cargo" class="cargo-container">
+            <option value="00000" hidden selected>
+              Seleccione un cargo para filtrar
+            </option>
+          </select>
+          <input
+            type="text"
+            name="empleado"
+            id="empleado"
+            class="input-empleado"
+            placeholder="Digite el nombre de un postulante"
+          />
+          <i class="fas fa-search icono-buscar"></i>
+        </div>
+        <div class="empleados-container b_radius">
+          <table class="tabla-empleados">
+            <thead class="fila-titulos">
+              <td class="titulo-tabla">Imagen</td>
+              <td class="titulo-tabla">Nombre</td>
+              <td class="titulo-tabla">Cargo postulante</td>
+              <td class="titulo-tabla">Teléfono</td>
+              <td class="titulo-tabla">Correo</td>
+              <td class="titulo-tabla">
+                Opciones
+                <i class="fas fa-info-circle"></i>
+              </td>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <!-- Modal -->
+    <%- include("../templates/Modal") %>
+    <script type="text/javascript" src="../js/solicitudes.js"></script>
+  </body>
+</html>
